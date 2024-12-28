@@ -1,5 +1,5 @@
 import { P5CanvasInstance } from "@p5-wrapper/react";
-import p5, { Color } from 'p5';
+import { Element as P5Element } from "p5";
 
 export function binarySearchClock(p5: P5CanvasInstance) {
     let state_fresh = true;
@@ -18,13 +18,15 @@ export function binarySearchClock(p5: P5CanvasInstance) {
         return [r, g, b];
     }
 
-    let timeInput :  p5.Element;
+    let timeInput: P5Element;
     let msg = "";
 
     const compareTime = (s: String) => {
         if (s.length==0) {
             state_fresh = true;
             return true;
+        } else {
+            state_fresh = false;
         }
         const currentTime = new Date();
         const [inputHours, inputMinutes, inputSeconds] = s.split(':').map(Number);
