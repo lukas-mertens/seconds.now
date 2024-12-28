@@ -1,4 +1,7 @@
 .react-p5-wrapper {
   width: 100vw;
   height: 100vh;
+  background: #F5F5F5;
+  display: flex;
+  justify-content: center;
 }
