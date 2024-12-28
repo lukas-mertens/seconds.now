@@ -2,8 +2,8 @@ import { P5CanvasInstance } from "@p5-wrapper/react";
 
 export function colorClockLegend(p5: P5CanvasInstance) {
     // 1) Arrays for minute (24*60=1440) and second (60) colors
-    let minuteColors: p5.Color[] = [];
-    let secondColors: p5.Color[] = [];
+    let minuteColors: [number, number, number][] = [];
+    let secondColors: [number, number, number][] = [];
 
     // 2) Fixed canvas size (no resizing)
     const CANVAS_WIDTH = 1000;
@@ -107,7 +107,7 @@ export function colorClockLegend(p5: P5CanvasInstance) {
                 p5.noStroke();
                 p5.text(`${hour}`, labelX, labelY);
             }
-            // Optionally label the second col=25
+            // label the second col=25
             {
                 const labelX = startX + 25 * BOX_SIZE + BOX_SIZE / 2;
                 const labelY = startY - BOX_SIZE * 0.7;
@@ -171,7 +171,7 @@ export function colorClockLegend(p5: P5CanvasInstance) {
                 p5.noStroke();
                 p5.text(`${minute}`, labelX, labelY);
             }
-            // Optionally label row=25 as "sec"
+            // label row=25 as "sec"
             {
                 const labelX = startX - BOX_SIZE * 0.7;
                 const labelY = startY + 25 * BOX_SIZE + BOX_SIZE / 2;
@@ -241,19 +241,16 @@ export function colorClockLegend(p5: P5CanvasInstance) {
         // 3) We'll compute the bounding box for our unified grid
         //    so we can center it horizontally
         let gridWidth: number;
-        let gridHeight: number;
 
         if (orientation === "portrait") {
             // total columns = 26 => 24 for hours + 1 gap + 1 for seconds
             // total rows = 60
             gridWidth = 26 * BOX_SIZE;
-            gridHeight = 60 * BOX_SIZE;
         } else {
             // landscape
             // columns = 60
             // rows = 26 => 24 for hours + 1 gap + 1 for seconds
             gridWidth = 60 * BOX_SIZE;
-            gridHeight = 26 * BOX_SIZE;
         }
 
         // We'll place the top of the grid below the clock
