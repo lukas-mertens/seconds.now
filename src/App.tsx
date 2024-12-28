@@ -4,9 +4,10 @@ import { clock1 } from "./clocks/1";
 import { useEffect, useState } from "react";
 import { secretInternationalClock } from "./clocks/2.tsx";
 import { colorClockLegend } from "./clocks/3.tsx";
+import { binarySearchClock } from "./clocks/4.tsx";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const availableClocks = [clock1, secretInternationalClock, colorClockLegend];
+const availableClocks = [clock1, secretInternationalClock, colorClockLegend, binarySearchClock];
 
 export default function App() {
   const [currentClock, setCurrentClock] = useState<number | null>(null);
