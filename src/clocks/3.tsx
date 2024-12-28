@@ -1,9 +1,10 @@
 import { P5CanvasInstance } from "@p5-wrapper/react";
+import { Color } from "p5";
 
 export function colorClockLegend(p5: P5CanvasInstance) {
     // 1) Arrays for minute (24*60=1440) and second (60) colors
-    let minuteColors: [number, number, number][] = [];
-    let secondColors: [number, number, number][] = [];
+    let minuteColors: Color[] = [];
+    let secondColors: Color[] = [];
 
     // 2) Fixed canvas size (no resizing)
     const CANVAS_WIDTH = 1000;
